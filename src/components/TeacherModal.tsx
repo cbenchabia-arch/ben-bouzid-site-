@@ -62,21 +62,25 @@ export const TeacherModal: React.FC<TeacherModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 bg-stone-900/70 backdrop-blur-xs flex items-center justify-center p-4 overflow-y-auto">
-      <div className="bg-white rounded-xl shadow-2xl max-w-xl w-full flex flex-col overflow-hidden border border-stone-200">
-        <div className="bg-emerald-950 text-white px-6 py-4 flex items-center justify-between border-b border-emerald-900">
+    <div className="fixed inset-0 z-50 bg-stone-900/70 backdrop-blur-xs flex items-center justify-center p-2 sm:p-4 overflow-y-auto">
+      <div className="bg-white rounded-xl shadow-2xl max-w-xl w-full max-h-[96vh] sm:max-h-[90vh] flex flex-col overflow-hidden border border-stone-200">
+        <div className="bg-emerald-950 text-white px-4 sm:px-6 py-3.5 sm:py-4 flex items-center justify-between border-b border-emerald-900 shrink-0">
           <div className="flex items-center gap-2">
-            <UserPlus className="w-5 h-5 text-amber-300" />
-            <h2 className="text-base font-bold">
+            <UserPlus className="w-5 h-5 text-amber-300 shrink-0" />
+            <h2 className="text-sm sm:text-base font-bold">
               {teacher ? 'تعديل ملف أستاذ اللغة العربية' : 'تسجيل أستاذ لغة عربية جديد بالمقاطعة'}
             </h2>
           </div>
-          <button onClick={onClose} className="text-emerald-200 hover:text-white transition-colors">
+          <button 
+            onClick={onClose} 
+            className="min-h-[40px] min-w-[40px] p-2 text-emerald-200 hover:text-white transition-colors flex items-center justify-center"
+            aria-label="إغلاق"
+          >
             <X className="w-5 h-5" />
           </button>
         </div>
 
-        <form onSubmit={handleSubmit} className="p-6 space-y-4 text-xs">
+        <form onSubmit={handleSubmit} className="p-4 sm:p-6 space-y-4 text-xs overflow-y-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="md:col-span-2">
               <label className="block font-semibold text-stone-700 mb-1">الاسم واللقب كاملاً:</label>
@@ -231,17 +235,17 @@ export const TeacherModal: React.FC<TeacherModalProps> = ({
             </div>
           </div>
 
-          <div className="pt-4 border-t border-stone-200 flex items-center justify-end gap-3">
+          <div className="pt-4 border-t border-stone-200 flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-end gap-2.5 sm:gap-3 shrink-0">
             <button
               type="button"
               onClick={onClose}
-              className="px-4 py-2 border border-stone-300 text-stone-700 hover:bg-stone-100 rounded-lg font-medium transition-colors"
+              className="min-h-[42px] sm:min-h-[38px] px-5 py-2.5 border border-stone-300 text-stone-700 hover:bg-stone-100 rounded-lg font-medium transition-colors flex items-center justify-center text-xs"
             >
               إلغاء
             </button>
             <button
               type="submit"
-              className="flex items-center gap-1.5 px-5 py-2 bg-emerald-800 hover:bg-emerald-900 text-white rounded-lg font-bold shadow-xs transition-colors"
+              className="min-h-[42px] sm:min-h-[38px] flex items-center justify-center gap-2 px-6 py-2.5 bg-emerald-800 hover:bg-emerald-900 active:bg-emerald-950 text-white rounded-lg font-bold shadow-xs transition-colors text-xs"
             >
               <Save className="w-4 h-4" />
               <span>{teacher ? 'تحديث الملف' : 'إضافة الأستاذ'}</span>

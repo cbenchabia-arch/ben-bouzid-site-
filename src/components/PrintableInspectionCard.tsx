@@ -25,29 +25,30 @@ export const PrintableInspectionCard: React.FC<PrintableInspectionCardProps> = (
   };
 
   return (
-    <div className="fixed inset-0 z-50 bg-stone-900/70 backdrop-blur-xs flex items-center justify-center p-4 overflow-y-auto">
+    <div className="fixed inset-0 z-50 bg-stone-900/70 backdrop-blur-xs flex items-center justify-center p-1.5 sm:p-4 overflow-y-auto">
       {/* Container */}
-      <div className="bg-white rounded-xl shadow-2xl max-w-4xl w-full max-h-[92vh] flex flex-col overflow-hidden border border-stone-300">
+      <div className="bg-white rounded-lg sm:rounded-xl shadow-2xl max-w-4xl w-full max-h-[96vh] sm:max-h-[92vh] flex flex-col overflow-hidden border border-stone-300">
         
         {/* Modal Controls Toolbar (Hidden on print) */}
-        <div className="no-print bg-stone-100 border-b border-stone-200 px-6 py-3 flex items-center justify-between">
+        <div className="no-print bg-stone-100 border-b border-stone-200 px-3 sm:px-6 py-2.5 sm:py-3 flex flex-wrap items-center justify-between gap-2 shrink-0">
           <div className="flex items-center gap-2">
-            <Award className="w-5 h-5 text-emerald-800" />
-            <h2 className="font-bold text-stone-800 text-sm md:text-base">
-              معاينة بطاقة التفتيش البيداغوجي الرسمية (جاهزة للطباعة A4)
+            <Award className="w-5 h-5 text-emerald-800 shrink-0" />
+            <h2 className="font-bold text-stone-800 text-xs sm:text-base">
+              معاينة بطاقة التفتيش البيداغوجي الرسمية (A4)
             </h2>
           </div>
           <div className="flex items-center gap-2">
             <button
               onClick={handlePrint}
-              className="flex items-center gap-1.5 px-4 py-2 bg-emerald-800 hover:bg-emerald-900 text-white rounded-lg text-xs font-semibold shadow-xs transition-colors"
+              className="min-h-[40px] flex items-center gap-1.5 px-3.5 sm:px-4 py-2 bg-emerald-800 hover:bg-emerald-900 active:bg-emerald-950 text-white rounded-lg text-xs font-semibold shadow-xs transition-colors"
             >
               <Printer className="w-4 h-4" />
-              <span>طباعة المستند الرسمي</span>
+              <span>طباعة المستند</span>
             </button>
             <button
               onClick={onClose}
-              className="p-2 text-stone-500 hover:text-stone-800 hover:bg-stone-200 rounded-lg transition-colors"
+              className="min-h-[40px] min-w-[40px] p-2 text-stone-500 hover:text-stone-800 hover:bg-stone-200 rounded-lg transition-colors flex items-center justify-center"
+              aria-label="إغلاق"
             >
               <X className="w-5 h-5" />
             </button>
@@ -55,7 +56,7 @@ export const PrintableInspectionCard: React.FC<PrintableInspectionCardProps> = (
         </div>
 
         {/* Official Printable Document Body */}
-        <div className="p-8 overflow-y-auto bg-white font-sans text-stone-900 print:p-0 print:m-0" id="official-inspection-sheet">
+        <div className="p-3 sm:p-8 overflow-y-auto bg-white font-sans text-stone-900 print:p-0 print:m-0" id="official-inspection-sheet">
           
           {/* Header of the Official Document */}
           <div className="border-b-2 border-stone-900 pb-4 mb-6">

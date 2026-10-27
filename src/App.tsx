@@ -299,8 +299,8 @@ export default function App() {
         zones={zones}
       />
 
-      {/* Main Viewport Container */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      {/* Main Viewport Container (Responsive across Mobile, Tablet, and Desktop) */}
+      <main className="flex-1 max-w-7xl w-full mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-6 pb-28 md:pb-24 lg:pb-12">
         {activeTab === 'dashboard' && (
           <DashboardView
             zones={zones}
@@ -437,15 +437,24 @@ export default function App() {
       </main>
 
       {/* Footer */}
-      <footer className="no-print bg-white border-t border-stone-200 py-4 px-6 text-xs text-stone-500 text-center">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
-          <div>
-            <span>منظومة مفتشية اللغة العربية وآدابها</span>
-            <span className="mx-2">·</span>
+      <footer className="no-print bg-white border-t border-stone-200 py-4 px-4 sm:px-6 text-xs text-stone-500 text-center mb-16 md:mb-0">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-2.5">
+          <div className="flex flex-wrap items-center justify-center gap-2">
+            <span className="font-semibold text-stone-700">مفتشية التعليم الابتدائي لمادة اللغة العربية</span>
+            <span className="text-stone-300">·</span>
             <span>{inspector.districtName}</span>
+            <span className="text-stone-300 hidden sm:inline">·</span>
+            <span className="bg-emerald-50 text-emerald-800 text-[10px] font-semibold px-2 py-0.5 rounded border border-emerald-100 flex items-center gap-1">
+              <span>مكيف بالكامل:</span>
+              <span>هاتف 📱</span>
+              <span>·</span>
+              <span>لوحي 📟</span>
+              <span>·</span>
+              <span>حاسوب 💻</span>
+            </span>
           </div>
-          <div className="text-stone-400">
-            نظام التفتيش البيداغوجي والتقييم الإلكتروني للمؤسسات والأساتذة © {new Date().getFullYear()}
+          <div className="text-stone-400 text-[11px]">
+            منظومة المفتش بن بوزيد للبيداغوجيا والتقييم الإلكتروني للطور الابتدائي © {new Date().getFullYear()}
           </div>
         </div>
       </footer>

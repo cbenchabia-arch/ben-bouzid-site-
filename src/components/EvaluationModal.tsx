@@ -142,32 +142,33 @@ export const EvaluationModal: React.FC<EvaluationModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 bg-stone-900/70 backdrop-blur-xs flex items-center justify-center p-3 sm:p-4 overflow-y-auto">
-      <div className="bg-white rounded-xl shadow-2xl max-w-4xl w-full max-h-[94vh] flex flex-col overflow-hidden border border-stone-200">
+    <div className="fixed inset-0 z-50 bg-stone-900/70 backdrop-blur-xs flex items-center justify-center p-0 sm:p-4 overflow-y-auto">
+      <div className="bg-white rounded-none sm:rounded-xl shadow-2xl max-w-4xl w-full h-full sm:h-auto sm:max-h-[94vh] flex flex-col overflow-hidden border-0 sm:border border-stone-200">
         
         {/* Modal Header */}
-        <div className="bg-emerald-950 text-white px-6 py-4 flex items-center justify-between border-b border-emerald-900">
+        <div className="bg-emerald-950 text-white px-4 sm:px-6 py-3.5 sm:py-4 flex items-center justify-between border-b border-emerald-900 shrink-0">
           <div className="flex items-center gap-2.5">
-            <Award className="w-6 h-6 text-amber-300" />
+            <Award className="w-5 h-5 sm:w-6 sm:h-6 text-amber-300 shrink-0" />
             <div>
-              <h2 className="text-base sm:text-lg font-bold">
+              <h2 className="text-sm sm:text-lg font-bold">
                 نظام التقييم الإلكتروني والزيارة التفتيشية البيداغوجية
               </h2>
-              <p className="text-xs text-emerald-200">
+              <p className="text-[11px] sm:text-xs text-emerald-200">
                 استمارة شبكة التنقيط المعتمدة لمادة اللغة العربية وآدابها (المعدل من 20 ن)
               </p>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="p-1.5 text-emerald-200 hover:text-white hover:bg-emerald-900 rounded-lg transition-colors"
+            className="min-h-[40px] min-w-[40px] p-2 text-emerald-200 hover:text-white hover:bg-emerald-900 rounded-lg transition-colors flex items-center justify-center"
+            aria-label="إغلاق الاستمارة"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
         {/* Form Body */}
-        <form onSubmit={handleSubmit} className="overflow-y-auto p-6 space-y-6">
+        <form onSubmit={handleSubmit} className="overflow-y-auto p-4 sm:p-6 space-y-5 sm:space-y-6">
           
           {/* Section 1: Teacher & Session Identification */}
           <div className="bg-stone-50 border border-stone-200 p-4 rounded-lg space-y-4">
@@ -317,41 +318,41 @@ export const EvaluationModal: React.FC<EvaluationModalProps> = ({
                     </span>
                   </div>
 
-                  <div className="divide-y divide-stone-100 p-2">
+                  <div className="divide-y divide-stone-100 p-2 sm:p-2.5">
                     {axis.criteria.map((criterion) => (
-                      <div key={criterion.id} className="py-2 px-2 flex flex-col sm:flex-row sm:items-center justify-between gap-2 hover:bg-stone-50/50 rounded">
+                      <div key={criterion.id} className="py-2.5 px-2 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 hover:bg-stone-50/70 rounded-lg">
                         <div className="space-y-0.5">
-                          <div className="text-xs font-medium text-stone-900">{criterion.title}</div>
-                          <div className="text-[11px] text-stone-500">{criterion.description}</div>
+                          <div className="text-xs font-semibold text-stone-900">{criterion.title}</div>
+                          <div className="text-[11px] text-stone-500 leading-relaxed">{criterion.description}</div>
                         </div>
 
-                        {/* Interactive score input + quick presets */}
-                        <div className="flex items-center gap-2 shrink-0">
-                          <div className="flex items-center gap-1 bg-stone-100 p-0.5 rounded text-[10px]">
+                        {/* Interactive score input + quick presets (touch-optimized) */}
+                        <div className="flex items-center justify-between sm:justify-end gap-2 shrink-0 pt-1.5 sm:pt-0 border-t sm:border-t-0 border-stone-100">
+                          <div className="flex items-center gap-1 bg-stone-100 p-1 rounded-md text-xs">
                             <button
                               type="button"
                               onClick={() => handleScoreChange(axis.id, criterion.id, criterion.maxScore * 0.6)}
-                              className="px-1.5 py-0.5 rounded hover:bg-white text-stone-600 transition-colors"
+                              className="px-2 py-1 min-h-[32px] sm:min-h-[26px] rounded hover:bg-white active:bg-stone-200 text-stone-700 text-[11px] font-medium transition-colors"
                             >
                               مقبول
                             </button>
                             <button
                               type="button"
                               onClick={() => handleScoreChange(axis.id, criterion.id, criterion.maxScore * 0.85)}
-                              className="px-1.5 py-0.5 rounded hover:bg-white text-stone-700 transition-colors"
+                              className="px-2 py-1 min-h-[32px] sm:min-h-[26px] rounded hover:bg-white active:bg-stone-200 text-stone-800 text-[11px] font-medium transition-colors"
                             >
                               جيد
                             </button>
                             <button
                               type="button"
                               onClick={() => handleScoreChange(axis.id, criterion.id, criterion.maxScore)}
-                              className="px-1.5 py-0.5 rounded hover:bg-emerald-700 hover:text-white text-emerald-900 font-semibold transition-colors"
+                              className="px-2 py-1 min-h-[32px] sm:min-h-[26px] rounded hover:bg-emerald-700 active:bg-emerald-800 hover:text-white text-emerald-900 text-[11px] font-bold transition-colors"
                             >
                               كامل
                             </button>
                           </div>
 
-                          <div className="flex items-center gap-1">
+                          <div className="flex items-center gap-1.5">
                             <input
                               type="number"
                               step="0.05"
@@ -359,9 +360,9 @@ export const EvaluationModal: React.FC<EvaluationModalProps> = ({
                               max={criterion.maxScore}
                               value={criterion.currentScore}
                               onChange={(e) => handleScoreChange(axis.id, criterion.id, parseFloat(e.target.value) || 0)}
-                              className="w-16 py-1 px-1.5 border border-stone-300 rounded text-center text-xs font-bold text-emerald-900 tabular-nums focus:ring-1 focus:ring-emerald-600 focus:outline-none"
+                              className="w-18 min-h-[36px] sm:min-h-[30px] py-1 px-2 border border-stone-300 rounded text-center text-sm sm:text-xs font-bold text-emerald-900 tabular-nums focus:ring-1 focus:ring-emerald-600 focus:outline-none"
                             />
-                            <span className="text-[11px] text-stone-400">/ {criterion.maxScore}</span>
+                            <span className="text-xs text-stone-400 tabular-nums">/ {criterion.maxScore}</span>
                           </div>
                         </div>
                       </div>
@@ -445,17 +446,17 @@ export const EvaluationModal: React.FC<EvaluationModalProps> = ({
           </div>
 
           {/* Form Actions */}
-          <div className="pt-4 border-t border-stone-200 flex items-center justify-end gap-3">
+          <div className="pt-4 border-t border-stone-200 flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-end gap-2.5 sm:gap-3">
             <button
               type="button"
               onClick={onClose}
-              className="px-4 py-2 border border-stone-300 text-stone-700 hover:bg-stone-100 rounded-lg text-xs font-semibold transition-colors"
+              className="min-h-[44px] sm:min-h-[38px] px-5 py-2.5 border border-stone-300 text-stone-700 hover:bg-stone-100 rounded-lg text-xs font-semibold transition-colors flex items-center justify-center"
             >
               إلغاء
             </button>
             <button
               type="submit"
-              className="flex items-center gap-1.5 px-6 py-2.5 bg-emerald-800 hover:bg-emerald-900 text-white rounded-lg text-xs font-bold shadow-xs transition-colors"
+              className="min-h-[44px] sm:min-h-[38px] flex items-center justify-center gap-2 px-6 py-2.5 bg-emerald-800 hover:bg-emerald-900 active:bg-emerald-950 text-white rounded-lg text-xs font-bold shadow-xs transition-colors"
             >
               <Save className="w-4 h-4" />
               <span>اعتماد وحفظ بطاقة التفتيش</span>

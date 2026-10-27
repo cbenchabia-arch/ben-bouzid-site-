@@ -196,21 +196,22 @@ export const EvaluationSystemView: React.FC<EvaluationSystemViewProps> = ({
         </div>
       </div>
 
-      {/* Evaluations Table */}
+      {/* Evaluations Table (Responsive with horizontal touch scroll on mobile/tablet) */}
       <div className="bg-white border border-stone-200 rounded-xl overflow-hidden shadow-2xs">
-        <table className="w-full text-xs text-right border-collapse">
-          <thead>
-            <tr className="bg-stone-50 text-stone-700 border-b border-stone-200">
-              <th className="py-3 px-4 font-semibold">الأستاذ والمؤسسة</th>
-              <th className="py-3 px-4 font-semibold">نوع التفتيش والفرع</th>
-              <th className="py-3 px-4 font-semibold">عنوان الدرس المشاهد</th>
-              <th className="py-3 px-4 font-semibold text-center">الدرجة الممنوحة</th>
-              <th className="py-3 px-4 font-semibold">التقدير والقرار</th>
-              <th className="py-3 px-4 font-semibold text-center">تاريخ الإجراء</th>
-              <th className="py-3 px-4 font-semibold text-center">إجراءات</th>
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-stone-100">
+        <div className="overflow-x-auto">
+          <table className="w-full text-xs text-right border-collapse min-w-[720px]">
+            <thead>
+              <tr className="bg-stone-50 text-stone-700 border-b border-stone-200">
+                <th className="py-3 px-4 font-semibold">الأستاذ والمؤسسة</th>
+                <th className="py-3 px-4 font-semibold">نوع التفتيش والفرع</th>
+                <th className="py-3 px-4 font-semibold">عنوان الدرس المشاهد</th>
+                <th className="py-3 px-4 font-semibold text-center">الدرجة الممنوحة</th>
+                <th className="py-3 px-4 font-semibold">التقدير والقرار</th>
+                <th className="py-3 px-4 font-semibold text-center">تاريخ الإجراء</th>
+                <th className="py-3 px-4 font-semibold text-center">إجراءات</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-stone-100">
             {filteredEvaluations.map((evalItem) => {
               const tch = teachers.find((t) => t.id === evalItem.teacherId);
               const inst = institutions.find((i) => i.id === evalItem.institutionId);
@@ -293,6 +294,7 @@ export const EvaluationSystemView: React.FC<EvaluationSystemViewProps> = ({
             )}
           </tbody>
         </table>
+        </div>
       </div>
 
     </div>

@@ -129,20 +129,21 @@ export const ScheduleView: React.FC<ScheduleViewProps> = ({
         </div>
       </div>
 
-      {/* Visits List */}
+      {/* Visits List (Responsive with horizontal touch scroll on mobile/tablet) */}
       <div className="bg-white border border-stone-200 rounded-xl overflow-hidden shadow-2xs">
-        <table className="w-full text-xs text-right border-collapse">
-          <thead>
-            <tr className="bg-stone-50 text-stone-700 border-b border-stone-200">
-              <th className="py-3 px-4 font-semibold">التاريخ والتوقيت</th>
-              <th className="py-3 px-4 font-semibold">الأستاذ المستهدف</th>
-              <th className="py-3 px-4 font-semibold">المؤسسة والجهة</th>
-              <th className="py-3 px-4 font-semibold">نوع الزيارة والهدف البيداغوجي</th>
-              <th className="py-3 px-4 font-semibold text-center">الحالة</th>
-              <th className="py-3 px-4 font-semibold text-center">إجراءات المفتش</th>
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-stone-100">
+        <div className="overflow-x-auto">
+          <table className="w-full text-xs text-right border-collapse min-w-[720px]">
+            <thead>
+              <tr className="bg-stone-50 text-stone-700 border-b border-stone-200">
+                <th className="py-3 px-4 font-semibold">التاريخ والتوقيت</th>
+                <th className="py-3 px-4 font-semibold">الأستاذ المستهدف</th>
+                <th className="py-3 px-4 font-semibold">المؤسسة والجهة</th>
+                <th className="py-3 px-4 font-semibold">نوع الزيارة والهدف البيداغوجي</th>
+                <th className="py-3 px-4 font-semibold text-center">الحالة</th>
+                <th className="py-3 px-4 font-semibold text-center">إجراءات المفتش</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-stone-100">
             {filteredVisits.map((visit) => {
               const tch = teachers.find((t) => t.id === visit.teacherId);
               const inst = institutions.find((i) => i.id === visit.institutionId);
@@ -236,6 +237,7 @@ export const ScheduleView: React.FC<ScheduleViewProps> = ({
             )}
           </tbody>
         </table>
+        </div>
       </div>
 
     </div>
